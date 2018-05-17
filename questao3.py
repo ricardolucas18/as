@@ -55,6 +55,6 @@ if __name__ == '__main__':
 	if "httpd" not in packageList:
 		os.system("yum install -y httpd*")
 	runScripts()
-	subprocess.check_call("service named restart".split())
+	os.system("service named restart")
 
 
