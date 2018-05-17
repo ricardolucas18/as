@@ -3,6 +3,13 @@ import subprocess
 import string 
 from questao1 import *
 
+def delete_zone_forward():
+    dominio_to_delete = raw_input("Insira  o dominio a eliminar: ")
+
+    delete_zone(dominio_to_delete)
+
+    os.system("rm /var/named/"+dominio_to_delete+".hosts")
+
 def delete_zone(dominio):
     fin = open("/etc/named.conf", "r")
     data = fin.readlines()
@@ -32,9 +39,7 @@ def delete_virtualHost(ip_virtual_host):
 resposta_input = raw_input("Pretende eliminar o que?(1-zona forward /n 2-virtualhost /n 3-zona reverse):")
 
 if resposta_input =="1":
-    zona_forward = raw_input("Qual o nome da zona forward?")
-    delete_zone("zone "+zona_forward)   
-    os.system("rm /var/named/"+zona_forward+".hosts")
+    delete_zone_forward()
 
 
 elif resposta_input =="2":
