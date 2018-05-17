@@ -9,10 +9,10 @@ def delete_zone(dominio):
     fin.close()
 
     for i, line in enumerate(data):
-            if dominio in line:
-                del data[i:i+4]
+        if dominio in line:
+            del data[i:i+4]
 
-    fout =open("/etc/named.conf", "w")
+    fout = open("/etc/named.conf", "w")
     fout.writelines(data)
     fout.close()
 
