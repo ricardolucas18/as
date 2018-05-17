@@ -6,7 +6,7 @@ from questao1 import *
 def get_user_input():
 	global resolv_dns_file, zone_forward, dominio_input, hosts_file, ip_input
 	dominio_input = raw_input("Insira o dominio: ")
-	zone_forward = '\nzone "'+dominio_input+'" IN { \n	type master;\n	file "/var/named/'+dominio_input+'.hosts";\n};'
+	zone_forward = '\nzone "'+dominio_input+'" IN { \n	type master;\n	file "/var/named/'+dominio_input+'.hosts";\n	};'
 	ip_input = raw_input("Insira o IP para o dominio: ")
 	hosts_file = '$TTL 38400\n@	IN	SOA	trabalho.pt. mail.'+dominio_input+'.(\n			100;\n			10800;\n			3600;\n			684000;\n			38400;\n			)\n	IN	NS	trabalho.pt.\n	IN	A	'+ip_input
 	resolv_dns_file = "search trabalho.pt\nnameserver 127.0.0.1"
