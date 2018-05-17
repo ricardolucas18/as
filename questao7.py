@@ -10,22 +10,22 @@ if "nfs" not in pacotesInstalados:
 
 
 def exportsConfig(diretoria):
-    ip_network = input("Qual o ip da network?(ex: 192.168.43.0/24\n")
-    optionsRead = input("Options:\n1-Read and Write Acess.\n2-Read Only Acess.\n")
+    ip_network = raw_input("Qual o ip da network?(ex: 192.168.43.0/24\n")
+    optionsRead = raw_input("Options:\n1-Read and Write Acess.\n2-Read Only Acess.\n")
     
     if optionsRead =="1":
         optionOne = "rw"
     elif optionsRead =="2":
         optionOne = "ro"
  
-    optionsWrites = input("Options:\n1-Writes Data when the server feels the need, not the client.\n2-Writes data as it is received.\n")
+    optionsWrites = raw_input("Options:\n1-Writes Data when the server feels the need, not the client.\n2-Writes data as it is received.\n")
     if optionsWrites =="1":
         optionTwo = "async"
     elif optionsWrites =="2":
         optionTwo = "sync"
 
 
-    optionsHide = input("Options:\n1-hide\n2-no hide\n")
+    optionsHide = raw_input("Options:\n1-hide\n2-no hide\n")
     if optionsHide =="1":
         optionThree = "hide"
     elif optionsHide =="2":
@@ -38,10 +38,10 @@ def exportsConfig(diretoria):
     print("Directoria Adinionada com Sucesso!")
 
 
-resposta_input = input("Script do nfs, o que pretende fazer?\n1-Criar uma partilha\n2-Eliminar uma partilha\n3-Alterar uma Partilha\n")
+resposta_input = raw_input("Script do nfs, o que pretende fazer?\n1-Criar uma partilha\n2-Eliminar uma partilha\n3-Alterar uma Partilha\n")
 
 if resposta_input =="1":
-    dir = input("Qual o nome da directoria que pretende criar e exportar?\n")
+    dir = raw_input("Qual o nome da directoria que pretende criar e exportar?\n")
     if not os.path.exists(dir):
     		os.makedirs(dir)
     subprocess.check_call("chown 65534.65534 "+dir.split())
@@ -50,7 +50,7 @@ if resposta_input =="1":
     subprocess.check_call("service nfs restart".split())
 
 if resposta_input =="2":
-    dir = input("Qual o nome da directoria que pretende eliminar da partilha?\n")
+    dir = raw_input("Qual o nome da directoria que pretende eliminar da partilha?\n")
     fin = open("teste.txt", "r")
     data = fin.readlines()
     fin.close()
@@ -62,27 +62,26 @@ if resposta_input =="2":
     fout =open("/etc/exports", "w")
     fout.writelines(data)
     fout.close()
-    subprocess.check_call("service nfs restart".split())
 
 
 if resposta_input =="3":
-    dir = input("Qual o nome da directoria que pretende alterar a partilha?\n")
-    ip_network = input("Qual o ip da network?(ex: 192.168.43.0/24)\n")
-    optionsRead = input("Options:\n1-Read and Write Acess.\n2-Read Only Acess.\n")
+    dir = raw_input("Qual o nome da directoria que pretende alterar a partilha?\n")
+    ip_network = raw_input("Qual o ip da network?(ex: 192.168.43.0/24)\n")
+    optionsRead = raw_input("Options:\n1-Read and Write Acess.\n2-Read Only Acess.\n")
     
     if optionsRead =="1":
         optionOne = "rw"
     elif optionsRead =="2":
         optionOne = "ro"
  
-    optionsWrites = input("Options:\n1-Writes Data when the server feels the need, not the client.\n2-Writes data as it is received.\n")
+    optionsWrites = raw_input("Options:\n1-Writes Data when the server feels the need, not the client.\n2-Writes data as it is received.\n")
     if optionsWrites =="1":
         optionTwo = "async"
     elif optionsWrites =="2":
         optionTwo = "sync"
 
 
-    optionsHide = input("Options:\n1-hide\n2-no hide\n")
+    optionsHide = raw_input("Options:\n1-hide\n2-no hide\n")
     if optionsHide =="1":
         optionThree = "hide"
     elif optionsHide =="2":
@@ -102,3 +101,5 @@ if resposta_input =="3":
     f.write(diretoriaExport)
     f.close()
     print("Directoria Alterada com Sucesso!")
+
+os.system("service nfs restart")
