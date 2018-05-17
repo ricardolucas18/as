@@ -2,8 +2,9 @@ import subprocess
 import string 
 import os
 
+global resolv_dns_file, zone_forward, dominio_input, hosts_file
+
 def domain_input_zone_forward():
-	global resolv_dns_file, zone_forward, dominio_input, hosts_file
 	
 	dominio_input = raw_input("Insira o dominio: ")
 	zone_forward = """\nzone """+dominio_input+""" IN { 
