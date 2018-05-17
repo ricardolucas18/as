@@ -44,10 +44,9 @@ if resposta_input =="1":
     dir = raw_input("Qual o nome da directoria que pretende criar e exportar?\n")
     if not os.path.exists(dir):
     		os.makedirs(dir)
-    subprocess.check_call("chown 65534.65534 "+dir.split())
-    subprocess.check_call("chmod 755 "+dir.split())
+    os.system("chown 65534.65534 "+dir.split())
+    os.system("chmod 755 "+dir.split())
     exportsConfig(dir)
-    subprocess.check_call("service nfs restart".split())
 
 if resposta_input =="2":
     dir = raw_input("Qual o nome da directoria que pretende eliminar da partilha?\n")
