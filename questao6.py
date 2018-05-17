@@ -4,7 +4,7 @@ import string
 from questao1 import *
 
 def delete_zone(dominio):
-    fin = open("teste.txt", "r")
+    fin = open("/etc/named.conf", "r")
     data = fin.readlines()
     fin.close()
 
