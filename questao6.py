@@ -33,7 +33,7 @@ resposta_input = raw_input("Pretende eliminar o que?(1-zona forward /n 2-virtual
 
 if resposta_input =="1":
     zona_forward = raw_input("Qual o nome da zona forward?")
-    delete_zone(zona_forward)   
+    delete_zone("zone "+zona_forward)   
     os.system("rm /var/named/"+zona_forward+".hosts")
 
 
