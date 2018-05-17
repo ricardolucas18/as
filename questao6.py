@@ -28,12 +28,12 @@ def delete_virtualHost(ip_virtual_host):
     fout =open("/etc/httpd/conf/httpd.conf", "w")
     fout.writelines(data)
     fout.close()
-    
+
 resposta_input = raw_input("Pretende eliminar o que?(1-zona forward /n 2-virtualhost /n 3-zona reverse):")
 
 if resposta_input =="1":
     zona_forward = raw_input("Qual o nome da zona forward?")
-    delete_zone(zone_forward)   
+    delete_zone(zona_forward)   
     os.system("rm /var/named/"+zona_forward+".hosts")
 
 elif resposta_input =="2":
