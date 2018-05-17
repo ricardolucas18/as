@@ -3,16 +3,16 @@ import subprocess
 import string 
 from questao1 import *
 
-resposta_input = input("Pretende eliminar o que?(1-zona forward /n 2-virtualhost /n 3-zona reverse):")
+resposta_input = raw_input("Pretende eliminar o que?(1-zona forward /n 2-virtualhost /n 3-zona reverse):")
 
 if resposta_input =="1":
-    zona_forward = input("Qual o nome da zona forward?")
+    zona_forward = raw_input("Qual o nome da zona forward?")
     delete_zone(zone_forward)   
     os.system("rm /var/named/"+zona_forward+".hosts")
 
 elif resposta_input =="2":
-    dominio_virtual = input("Qual o nome do dominio de VirtualHost que pretende eliminar?")
-    ip_virtual = input("Qual o Ip do VirtualHost que pretende eliminar?")
+    dominio_virtual = raw_input("Qual o nome do dominio de VirtualHost que pretende eliminar?")
+    ip_virtual = raw_input("Qual o Ip do VirtualHost que pretende eliminar?")
     delete_zone(dominio_virtual)
     os.system("rm /var/named/"+dominio_virtual+".hosts")
     delete_virtualHost(ip_virtual)
@@ -21,7 +21,7 @@ elif resposta_input =="2":
 
 
 elif resposta_input =="3":
-    ip_reverse = input("Qual o ip da zona reverse?")
+    ip_reverse = raw_input("Qual o ip da zona reverse?")
 
     delete_zone(ip_reverse)
     os.system("rm /var/named/"+ip_reverse+".in-addr.arpa.hosts")
