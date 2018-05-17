@@ -44,8 +44,8 @@ if resposta_input =="1":
     dir = raw_input("Qual o nome da directoria que pretende criar e exportar?\n")
     if not os.path.exists(dir):
     		os.makedirs(dir)
-    os.system("chown 65534.65534 "+dir.split())
-    os.system("chmod 755 "+dir.split())
+    os.system("chown 65534.65534 "+dir)
+    os.system("chmod 755 "+dir)
     exportsConfig(dir)
 
 if resposta_input =="2":
