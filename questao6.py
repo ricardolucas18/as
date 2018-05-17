@@ -12,7 +12,7 @@ def delete_zone(dominio):
             if dominio in line:
                 del data[i:i+4]
 
-    fout =open("teste.txt", "w")
+    fout =open("/etc/named.conf", "w")
     fout.writelines(data)
     fout.close()
 
@@ -35,7 +35,7 @@ if resposta_input =="1":
     zona_forward = raw_input("Qual o nome da zona forward?")
     delete_zone(zona_forward)   
     os.system("rm /var/named/"+zona_forward+".hosts")
-    os.system("service named restart")
+
 
 elif resposta_input =="2":
     dominio_virtual = raw_input("Qual o nome do dominio de VirtualHost que pretende eliminar?")
@@ -50,3 +50,5 @@ elif resposta_input =="3":
 
     delete_zone(ip_reverse)
     os.system("rm /var/named/"+ip_reverse+".in-addr.arpa.hosts")
+    
+os.system("service named restart")
