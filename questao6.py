@@ -35,7 +35,7 @@ if resposta_input =="1":
     zona_forward = raw_input("Qual o nome da zona forward?")
     delete_zone(zona_forward)   
     os.system("rm /var/named/"+zona_forward+".hosts")
-    subprocess.check_call("service named restart".split())
+    os.system("service named restart")
 
 elif resposta_input =="2":
     dominio_virtual = raw_input("Qual o nome do dominio de VirtualHost que pretende eliminar?")
