@@ -2,10 +2,9 @@ import subprocess
 import string 
 import os
 
-global resolv_dns_file, zone_forward, dominio_input, hosts_file
 
 def domain_input_zone_forward():
-	
+	global resolv_dns_file, zone_forward, dominio_input, hosts_file
 	dominio_input = raw_input("Insira o dominio: ")
 	zone_forward = """\nzone """+dominio_input+""" IN { 
 		\n	type master;
@@ -48,7 +47,7 @@ def restart_named():
 	subprocess.check_call("service named restart".split())
 
 def run_scripts():
-	domain_input_zone_forward
+	domain_input_zone_forward()
 	replace_lines()
 	write_resolv_file(resolv_dns_file)
 	create_zone(zone_forward, dominio_input)
